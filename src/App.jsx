@@ -3,6 +3,8 @@ import { Footer, Header } from './components'
 import authService from './appwrite/auth'
 import { useDispatch } from 'react-redux'
 import { login, logout } from './store/auth'
+import { Outlet } from 'react-router-dom'
+
 
 const App = () => {
 
@@ -26,10 +28,15 @@ const App = () => {
   }, [])
 
   return !isLoading ? (
-    <>
-      <Header />
-      <Footer />
-    </>
+    <div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
+      <div className='w-full block'>
+        <Header />
+        <main>
+          TODO:  <Outlet />
+        </main>
+        <Footer />
+      </div>
+    </div>
   ) : (
     <p>loading</p>
   )
